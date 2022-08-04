@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_24"
+        android:title="@string/lbl_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/submenu_sorting"
+        android:icon="@drawable/ic_sort_24"
+        android:title="@string/lbl_sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/option_sort_name"
+                    android:title="@string/lbl_sort_name" />
+                <item
+                    android:id="@+id/option_sort_artist"
+                    android:title="@string/lbl_artist" />
+                <item
+                    android:id="@+id/option_sort_album"
+                    android:title="@string/lbl_album" />
+                <item
+                    android:id="@+id/option_sort_year"
+                    android:title="@string/lbl_sort_year" />
+                <item
+                    android:id="@+id/option_sort_duration"
+                    android:title="@string/lbl_sort_duration" />
+                <item
+                    android:id="@+id/option_sort_count"
+                    android:title="@string/lbl_sort_count" />
+                <item
+                    android:id="@+id/option_sort_date_added"
+                    android:title="@string/lbl_sort_date_added" />
+            </group>
+            <group android:checkableBehavior="all">
+                <item
+                    android:id="@+id/option_sort_asc"
+                    android:title="@string/lbl_sort_asc" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/set_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/lbl_about"
+        app:showAsAction="never" />
+</menu>

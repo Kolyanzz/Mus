@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.oxycblt.auxio.ui.coordinator.EdgeCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/explore_nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="org.oxycblt.auxio.ui.BottomSheetContentBehavior"
+        app:navGraph="@navigation/nav_explore"
+        tools:layout="@layout/fragment_home" />
+
+    <org.oxycblt.auxio.ui.coordinator.EdgeCoordinatorLayout
+        android:id="@+id/playback_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="org.oxycblt.auxio.playback.PlaybackSheetBehavior">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/playback_bar_fragment"
+            android:name="org.oxycblt.auxio.playback.PlaybackBarFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/playback_panel_fragment"
+            android:name="org.oxycblt.auxio.playback.PlaybackPanelFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="org.oxycblt.auxio.ui.BottomSheetContentBehavior" />
+
+        <LinearLayout
+            android:id="@+id/queue_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="org.oxycblt.auxio.playback.queue.QueueSheetBehavior"
+            app:behavior_hideable="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/handle_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_bottom_sheet_bar">
+
+                <ImageView
+                    android:id="@+id/handle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_btn"
+                    android:scaleType="center"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:src="@drawable/ic_down_24"
+                    android:contentDescription="@string/desc_queue_bar"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/queue_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_queue"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    app:layout_constraintBottom_toBottomOf="@+id/handle"
+                    app:layout_constraintEnd_toEndOf="@+id/handle"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/queue_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:name="org.oxycblt.auxio.playback.queue.QueueFragment" />
+
+        </LinearLayout>
+
+    </org.oxycblt.auxio.ui.coordinator.EdgeCoordinatorLayout>
+
+</org.oxycblt.auxio.ui.coordinator.EdgeCoordinatorLayout>
